@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <h4 class="text-center">Login Form</h4>
+        <form method="post" action="" novalidate>
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-success">Submit</button>
+            <div>
+
+                <a class="text-decoration-none" href="{% url 'beforelogin:registration' %}">Registration</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!--load static files-->
+    {% load static %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="{% if object.title %} {{ object.title }} {% else %}Welcome to My Website{% endif %}">
+    <meta name="Keywords"
+          content="HTML, Python, CSS, SQL, JavaScript, How to, PHP, Java, C, C++, C#, jQuery, Bootstrap, Colors, XML, MySQL, Icons, NodeJS, React, Graphics, Angular, R, AI, Git, Data Science, Code Game, Tutorials, Programming, Web Development, Training, Learning, Quiz, Exercises, Courses, Lessons, References, Examples, Learn to code, Source code, Demos, Tips, Website">
+    <meta name="Description"
+          content="Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, Python, PHP, Bootstrap, Java, XML and more.">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="days">
+    <meta name="author" content="Sakib Malik">
+    <!--Og properties-->
+
+    <meta property="og:title"
+          content="{% if object.title %} {{ object.title }} {% else %}Welcome to Website{% endif %}"/>
+    <meta property="og:image" content="{{ host_name }}/static/logo.ico">
+    <meta property="og:image:type" content="image/ico">
+    <meta property="og:image:width" content="50">
+    <meta property="og:image:height" content="50">
+    <meta property="og:description"
+          content="W3Code offers free online tutorials, references and exercises in all the major languages of the web. Covering popular subjects like HTML, CSS, JavaScript, Python, SQL, Java, and many, many more.">
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta name="theme-color" content="#4CAF50"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--Twitter Meta -->
+    <meta name="twitter:description" property="og:description"
+          content="Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, Python, PHP, Bootstrap, Java, XML and more."/>
+    <meta name="twitter:title" property="og:title"
+          content="{% if object.title %} {{ object.title }} {% else %}Welcome to w3code{% endif %}"/>
+    <meta property="og:url" content="{{ host_name }}"/>
+    <meta property="og:site_name" content="w3code.tech"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@pagew3code.tech"/>
+    <meta name="twitter:domain" content="w3code.tech"/>
+    <meta name="twitter:creator" content="@pagew3code.tech"/>
+    <title>{% block title %}Welcome to w3code{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'Bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" crossorigin="anonymous">
+    <!--Icon for the title bar-->
+    <link rel="icon" href="{% static 'logo.ico' %}" type="image/x-icon">
+
+    <!--Font awesome kit cdn-->
+    <link rel="stylesheet" href="{% static 'Bootstrap/fontawesome/all.min.css' %}"/>
+    <!--CSS BLock-->
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+<!--Body content Block-->
+{% block content %}
+
+    <div>
+    <a href="{% url 'beforelogin:logout' %}">Logout</a>
+    </div>
+{% endblock %}
+</body>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="{% static 'Bootstrap/js/bootstrap.bundle.min.js' %}" crossorigin="anonymous"></script>
+<script src="{% static 'Bootstrap/jquery/jquery-3.6.0.js' %}"></script>
+{% block js %}
+{% endblock %}
+</html>
+

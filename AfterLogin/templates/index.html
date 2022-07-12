@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container row">
+        <a href='{% url 'beforelogin:logout' %}'>Logout</a>
+        <h1 class="text-center">User data</h1>
+        <div class="col-4">
+            <h4>Create Car</h4>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="type" value="create">
+                {{ form|crispy }}
+                <button class="btn btn-success" type="submit">Create</button>
+            </form>
+        </div>
+        <div class="col-8">
+            <h4>List Cars</h4>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Model</th>
+                    <th scope="col" colspan="2">Action</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in object_list %}
+                    <tr>
+                        <th>{{ obj.name }}</th>
+                        <th>{{ obj.car_model }}</th>
+                        <th>
+                            <form method="post">
+                                <input type="hidden" name="type" value="delete">
+                                <input type="hidden" name="pk" value="{{ obj.pk }}">
+                                {% csrf_token %}
+                                <button class="btn btn-danger" type="submit">delete</button>
+                            </form>
+                        </th>
+                        <th>
+                            <a href="{% url 'afterlogin:carupdate' obj.pk %}" class="btn btn-success">Update</a>
+                        </th>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

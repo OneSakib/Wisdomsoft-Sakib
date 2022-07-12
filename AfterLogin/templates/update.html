@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container row">
+        <h1 class="text-center">User data Update</h1>
+        <div class="col-12">
+            <h4>Create Car</h4>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="type" value="create">
+                {{ form|crispy }}
+                <button class="btn btn-success" type="submit">Update</button>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}
